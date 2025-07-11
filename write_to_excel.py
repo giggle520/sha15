@@ -112,17 +112,6 @@ def write_runner_record(records, ws, row_start, index, key, user_name):
     ws.cell(row=row_start, column=3).alignment = Alignment(vertical='center', horizontal='center')
 
     total_km = 0.0
-    # for record in records:
-    #     date = datetime.strptime(record['punchDate'], "%Y-%m-%d")
-    #     weekday = date.weekday()  # 0-6 -> 周一到周日
-    #     col = 8 + weekday
-    #     km = round(record['distance'] / 1000, 2)
-    #     pace = format_pace(record['avgPace'])
-    #     ws.cell(row=row_start, column=col, value=km)
-    #     ws.cell(row=row_start, column=col).alignment = Alignment(vertical='center', horizontal='center')
-    #     ws.cell(row=row_start + 1, column=col, value=pace)
-    #     ws.cell(row=row_start + 1, column=col).alignment = Alignment(vertical='center', horizontal='center')
-    #     total_km += km
 
     createTime_list = []
     for record in records:
