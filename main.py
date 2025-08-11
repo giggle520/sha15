@@ -116,12 +116,12 @@ def parse_running_records(json_data, start_date=None, end_date=None, ws=None, ro
 def map_username(user_name):
     # 定义特殊映射规则
     special_mapping = {
-        '唐文超': '唐文超-24MEM',
         '张帅': '张帅-22MBA',
         '何文华': '何文华-2022MBA',
         '蔡宝岩': '蔡宝岩-23MEM',
-        '叶橙': '叶橙-2023MBA',
-        'syh': '石翊函'
+        'syh': '石翊函',
+        'C': '程妤洁',
+        '蔡大廪':'大廪'
     }
     
     # 检查用户名是否在特殊映射中
@@ -197,15 +197,6 @@ if __name__ == "__main__":
         print(key)
         user_names = group_dict.get(key)
         for user_name in user_names:
-            '''
-            特殊mapping:
-            唐文超 -> 唐文超-24MEM
-            张帅 -> 张帅-22MBA
-            何文华 -> 何文华-2022MBA
-            蔡宝岩 -> 蔡宝岩-23MEM
-            叶橙 -> 叶橙-2023MBA
-            syh -> 石翊函
-            '''
             for i, user in enumerate(all_users, 1): 
                 if user['userName'] == map_username(user_name):
                     data = ppt_api.get_weekly_data(user['userId'], target_date=target_date)

@@ -63,7 +63,7 @@ class PPT_API():
                     total_pages = int(data["data"]["pageData"]["pages"])
                     print(f"总页数: {total_pages}")
                 # 如果页数大于总页数，退出循环
-                if page >= total_pages:
+                if page > total_pages:
                     print(f"实际总页数只有 {total_pages} 页，将停止在总页数")
                     break
                 

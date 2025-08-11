@@ -87,7 +87,8 @@ class JIELONG_API():
                         additional_items = item["applyActivityFeedInfo"]["additionalItemList"]
                         name = "未知姓名"
                         for attr in additional_items:
-                            if attr["attrText"] == "姓名":
+                            # if attr["attrText"] == "姓名":
+                            if "姓名" in attr["attrText"]:
                                 name = attr["itemValue"]["mainInfo"].strip()
                                 break
                         
