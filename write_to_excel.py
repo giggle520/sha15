@@ -115,7 +115,7 @@ def write_runner_record(records, ws, row_start, index, key, user_name):
 
     createTime_list = []
     for record in records:
-        date = datetime.strptime(record['punchDate'], "%Y-%m-%d")
+        date = datetime.strptime(record['workoutDate'], "%Y-%m-%d")
         weekday = date.weekday()  # 0-6 → 周一到周日
         col = 8 + weekday
         current_km = round(record['distance'] / 1000, 2)

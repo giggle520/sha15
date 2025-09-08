@@ -95,7 +95,7 @@ class PPT_API():
         return all_users
 
     def get_user_data(self, user_id, period):
-        url = "https://wx.pptsport.com/app/punch/pageList"
+        url = "https://wx.pptsport.com/app/workout/pageList"
     
         # 请求参数
         params = {

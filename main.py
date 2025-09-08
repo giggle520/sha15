@@ -53,7 +53,7 @@ def filter_by_date_range(records, start_date, end_date):
     
     filtered = []
     for record in records:
-        record_date = datetime.strptime(record['punchDate'], "%Y-%m-%d")
+        record_date = datetime.strptime(record['workoutDate'], "%Y-%m-%d")
         if start <= record_date <= end:
             filtered.append(record)
     return filtered
@@ -105,7 +105,7 @@ def parse_running_records(json_data, start_date=None, end_date=None, ws=None, ro
     return [
         {
             "name": record.get('userName'),
-            "date": record.get('punchDate'),
+            "date": record.get('workoutDate'),
             "distance_km": float(record.get('distance', 0)) / 1000,
             "pace": format_pace(record.get('avgPace')),
             "duration": record.get('duration')
