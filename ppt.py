@@ -10,11 +10,11 @@ class PPT_API():
         self.teamId = TEAM_ID  # 替换为实际的teamId
 
     def get_users(self):
-        base_url = "https://wx.pptsport.com/app/team/pageListRank"
+        base_url = "https://wx.pptsport.com/app/team/pageLeaderboard"
     
         # 固定参数
         params = {
-            "rankType": "5",
+            "leaderboardType": "5",
             "teamId": self.teamId,
             "pageSize": "10",
             "userName": ""
@@ -60,7 +60,7 @@ class PPT_API():
                     break
                 # 如果是第一次请求，获取总页数
                 if total_pages is None:
-                    total_pages = int(data["data"]["pageData"]["pages"])
+                    total_pages = int(data["data"]["leaderboard"]["pages"])
                     print(f"总页数: {total_pages}")
                 # 如果页数大于总页数，退出循环
                 if page > total_pages:
@@ -68,17 +68,17 @@ class PPT_API():
                     break
                 
                 # 提取用户信息
-                records = data["data"]["pageData"]["records"]
+                records = data["data"]["leaderboard"]["records"]
 
                 for user in records:
                     user_info = {
                         "userId": user["userId"],
-                        "teamId": user["teamId"],
+                        # "teamId": user["teamId"],
                         "userName": user["userName"],
                         "avatar": user["avatar"],
                         "distance": user["distance"],
-                        "frequency": user["frequency"],
-                        "joinTime": user["joinTime"]
+                        # "frequency": user["frequency"],
+                        # "joinTime": user["joinTime"]
                     }
                     all_users.append(user_info)
                 
