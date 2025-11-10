@@ -70,6 +70,9 @@ def write_runner_record(records, ws, row_start, index, key, user_name):
     elif key == '50公里':
         #浅红色
         color_str = "FF6347"
+    elif key == '70公里':
+        #浅紫色
+        color_str = "FF66FF"
     fill_lv = PatternFill(start_color=color_str, end_color=color_str, fill_type='solid')
     cell.fill = fill_lv
 
