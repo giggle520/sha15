@@ -94,14 +94,15 @@ class PPT_API():
         
         return all_users
 
-    def get_user_data(self, user_id, period):
-        url = "https://wx.pptsport.com/app/workout/pageList"
+    def get_user_data(self, user_id, year, month):
+        url = "https://api.pptsport.com/app/workout/page"
     
         # 请求参数
         params = {
             "userId": user_id,
             "teamId": self.teamId,
-            "period": period,
+            "year": year,
+            "month": month,
             "pageIndex": "1",
             "pageSize": "10"
         }
@@ -163,8 +164,8 @@ class PPT_API():
             # 跨月：请求两个月份的数据
             month1 = monday.strftime("%Y%m")
             month2 = sunday.strftime("%Y%m")
-            data1 = self.get_user_data(user_id, month1)
-            data2 = self.get_user_data(user_id, month2)
+            data1 = self.get_user_data(user_id, month1[:4], month1[4:])
+            data2 = self.get_user_data(user_id, month2[:4], month2[4:])
             # 合并 records 数据
             combined_records = (
                 data1.get("data", {}).get("records", []) + 
@@ -178,4 +179,4 @@ class PPT_API():
         else:
             # 未跨月：请求单月数据
             month = monday.strftime("%Y%m")
-            return self.get_user_data(user_id, month)
+            return self.get_user_data(user_id, month[:4], month[4:])
